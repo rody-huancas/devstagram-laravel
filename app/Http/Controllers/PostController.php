@@ -18,4 +18,9 @@ class PostController extends Controller
         // dd($user->username);
         return view('dashboard', ['user' => $user]);
     }
+
+    public function create()
+    {
+        return view('posts.create');
+    }
 }
