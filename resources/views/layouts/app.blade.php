@@ -15,10 +15,27 @@
             <div class="container mx-auto flex justify-between items-center">
                 <h1 class="text-3xl font-black">DevStagram</h1>
 
+                {{-- si un usuario está autenticado --}}
+                @auth
                 <nav class="flex items-center gap-3">
-                    <a href="#" class="font-bold uppercase text-gray-600">Inicio de Sesión</a>
-                    <a href="#" class="font-bold uppercase text-gray-600">Registrarse</a>
+                    <a href="#" class="font-bold text-gray-600">
+                        Hola: <span class="font-normal">{{auth()->user()->username}}</span>
+                    </a>
+                    <form method="POST" action="{{route('logout')}}">
+                        @csrf
+                        <button type="submit" class="font-bold uppercase text-gray-600">Cerrar Sesión</button>
+                    </form>
                 </nav>
+                @endauth
+
+                {{-- Si un usuario no está autenticado --}}
+                @guest
+                    <nav class="flex items-center gap-3">
+                        <a href="#" class="font-bold uppercase text-gray-600">Inicio de Sesión</a>
+                        <a href="{{ route('register') }}" class="font-bold uppercase text-gray-600">Crear Cuenta</a>
+                    </nav>
+                @endguest
+
             </div>
         </header>
 
@@ -27,7 +44,7 @@
             @yield('contenido')
         </main>
 
-        <footer class="text-center p-5 text-gray-500 font-bold uppercase">
+        <footer class="mt-10 text-center p-5 text-gray-500 font-bold uppercase">
             Devstagram - Todos los derechos reservados {{now()->year}}
         </footer>
 
