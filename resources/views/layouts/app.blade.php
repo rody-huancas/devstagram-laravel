@@ -41,7 +41,7 @@
                 {{-- Si un usuario no está autenticado --}}
                 @guest
                     <nav class="flex items-center gap-3">
-                        <a href="#" class="font-bold uppercase text-gray-600">Inicio de Sesión</a>
+                        <a href="{{route('login')}}" class="font-bold uppercase text-gray-600">Inicio de Sesión</a>
                         <a href="{{ route('register') }}" class="font-bold uppercase text-gray-600">Crear Cuenta</a>
                     </nav>
                 @endguest

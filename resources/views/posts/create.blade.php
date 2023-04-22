@@ -20,7 +20,7 @@
         </div>
 
         <div class="md:w-1/2 p-10  bg-white rounded-lg shadow-xl mt-10 md:mt-0">
-            <form action="{{ route('register') }}" method="POST" novalidate>
+            <form action="{{ route('posts.store') }}" method="POST" novalidate>
                 @csrf
                 {{-- Título --}}
                 <div class="mb-5">
@@ -34,7 +34,7 @@
                         value="{{old('titulo')}}"
                     />
 
-                    @error('name')
+                    @error('titulo')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{$message}}</p>
                     @enderror
                 </div>
@@ -49,7 +49,16 @@
                         class="border p-3 w-full rounded-lg @error('descripcion') border-red-500 @enderror"
                     >{{old('descripcion')}}</textarea>
 
-                    @error('name')
+                    @error('descripcion')
+                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{$message}}</p>
+                    @enderror
+                </div>
+
+                {{-- Imagen --}}
+                <div class="mt-5">
+                    <input type="hidden" name="imagen" value="{{old('imagen')}}">
+
+                    @error('imagen')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{$message}}</p>
                     @enderror
                 </div>
