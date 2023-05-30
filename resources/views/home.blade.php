@@ -5,5 +5,7 @@
 @endsection
 
 @section('contenido')
-    prueba
+    
+    <x-listar-post :posts="$posts" />
+
 @endsection

@@ -21,7 +21,7 @@ class PostController extends Controller
         // dd($user->username);
 
         // Con el paginate activamos el modo de paginación, en este caso quiero mostrar 12 publicaciones en una página, y si hay más, mostrar en otra página
-        $posts = Post::where('user_id', $user->id)->paginate(12);
+        $posts = Post::where('user_id', $user->id)->latest()->paginate(12);
 
         return view('dashboard', [
             'user'  => $user,
